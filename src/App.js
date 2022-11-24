@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import { NotFoundPage, HomePage, DvdsPage } from "./pages";
+import { Navbar } from "./components/navbar/navbar";
+import { Footer } from "./components/footer/footer";
+import { TestingComponent } from "./components/testing/testing.component";
+import "./app.css";
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="grid-container">
+      <div className="header">
+        <Navbar />
+      </div>
+      <div className="main">
+        <Routes>
+          <Route path="/" element={<HomePage></HomePage>}></Route>
+          <Route path="/*" element={<NotFoundPage></NotFoundPage>}></Route>
+          <Route path="/dvd-shop" element={<DvdsPage></DvdsPage>}></Route>
+        </Routes>
+      </div>
+      <Footer styles="footer"></Footer>
     </div>
   );
-}
-
-export default App;
+};
